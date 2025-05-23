@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotiGraphix | Creative Design & Development</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === Global Styles === */
+        :root {
+            --dark-blue: #051a20;
+            --teal: #193940;
+            --light-teal: #99c8d3;
+            --accent: #a8d3f8;
+            --text-light: #d9d3f8;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        body {
+            background: var(--teal);
+            color: var(--white);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        /* === Header/Nav === */
+        header {
+            background: var(--dark-blue);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo2 img {
+            height: 80px;
+            width: auto;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Bauhaus 93', sans-serif;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: var(--accent);
+            color: var(--dark-blue);
+        }
+
+        /* === Sections === */
+        section {
+            padding: 150px 50px 100px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section (From Homepage.svg) */
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, var(--teal) 0%, #0e4a54 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            align-content: left;
+        }
+
+        .hero-content h1 {
+            font-size: 76px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .hero-content .name {
+            font-family: 'Broadway', serif;
+            font-size: 82px;
+            display: block;
+            margin: 1px 0;
+        }
+
+        .hero-content p {
+            font-size: 24px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .btn {
+            background: var(--dark-blue);
+            color: var(--text-light);
+            padding: 15px 40px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* About Section (From About Me.svg) */
+        #about {
+            background: #101422;
+        }
+
+        .section-title {
+            font-family: 'Broadway', serif;
+            font-size: 50px;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: 5px;
+        }
+
+        .about-content {
+            font-size: 24px;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Services Section (From Services.svg) */
+        #services {
+            background: var(--teal);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--light-teal);
+            border-radius: 40px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            font-size: 28px;
+            color: var(--dark-blue);
+            border-bottom: 1px solid #707070;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .service-item {
+            font-size: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            color: var(--dark-blue);
+        }
+
+        .service-item:before {
+            content: "~";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: #101422;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 80px;
+        }
+        
+        /* Skills Column */
+        .skills-column {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skills-column h3 {
+            font-size: 28px;
+            color: var(--accent);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .skill-item img {
+            width: 40px;
+        }
+        
+        .skill-item span {
+            font-size: 20px;
+        }
+        
+        /* Progress Bars */
+        .progress-container {
+            margin-top: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .progress-bar {
+            margin-bottom: 20px;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .progress-track {
+            height: 10px;
+            background: var(--light-teal);
+            border-radius: 5px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+            background: var(--accent);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #101422;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .contact-form {
+            background-color: var(--accent);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255,255,255,0.9);
+            font-size: 18px;
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            font-size: 40px;
+            margin-right: 30px;
+            color: var(--accent);
+            min-width: 50px;
+        }
+        
+        .contact-text {
+            font-size: 24px;
+        }
+
+        /* Social Media */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 80px 0 40px;
+        }
+        
+        .social-icon {
+            font-size: 40px;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--text-light);
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--light-teal);
+            padding: 30px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Bauhaus 93', sans-serif;
+            font-size: 36px;
+            color: var(--accent);
+        }
+        
+        .copyright {
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            #hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 200px;
+            }
+            
+            .hero-content h1 {
+                font-size: 50px;
+            }
+            
+            .hero-content .name {
+                font-size: 60px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .contact-text {
+                font-size: 18px;
+            }
+            
+            .skills-column {
+                min-width: 100%;
+            }
+
+            .logo2 img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo2">
+               <img src="images/motigraphix_logo.png" alt="MotiGraphix_logo">
+            </div>
+            <a href="#hero" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hello, I'm<br><span class="name">Tyson Orowe Moti</span></h1>
+                <p>I am a Graphic Designer & Full-stack Developer creating visually compelling solutions at the intersection of art and technology.</p>
+                
+                <div class="hero-buttons">
+                    <a href="assets/MotiGraphix_CV.pdf" class="btn">Download CV</a>
+                    <a href="#contact" class="btn">Let's Talk</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            
+            <div class="about-content">
+                <p>Hi, I'm Moti — the creative mind behind MotiGraphix.</p>
+                <p>I'm a passionate designer and developer who thrives at the intersection of art and technology.</p>
+                <p>With a strong foundation in UI/UX, web development, graphic design, and digital illustration, I bring ideas to life through clean, functional, and visually compelling solutions.</p>
+                <p>Whether it's crafting smooth user interfaces or designing bold visual identities, I approach every project with creativity, precision, and a touch of personality.</p>
+                <p>MotiGraphix isn't just a brand — it's a vision to empower others through design, storytelling, and innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <h3>Graphics Design</h3>
+                    <div class="service-item">Visual identity & logo</div>
+                    <div class="service-item">Printed material design</div>
+                    <div class="service-item">UI-UX interface design</div>
+                    <div class="service-item">Custom Illustrations & Info graphics</div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <h3>Interactive Full Stack Development</h3>
+                    <div class="service-item">Creation of responsive websites</div>
+                    <div class="service-item">HTML, CSS & Javascript</div>
+                    <div class="service-item">CMS integration & WordPress</div>
+                    <div class="service-item">MySQL & Python</div>
+                    <div class="service-item">Website performance optimization</div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <h3>UI/UX Design</h3>
+                    <div class="service-item">Creation of efficient UI workflows</div>
+                    <div class="service-item">Wireframing and Prototyping</div>
+                    <div class="service-item">User testing to improve experience</div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <h3>Maintenance & Support</h3>
+                    <div class="service-item">Regular website updates</div>
+                    <div class="service-item">Website performance updates</div>
+                    <div class="service-item">24/7 Support</div>
+                    <div class="service-item">Technical issue resolution</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Experiences</h2>
+            
+            <div class="skills-container">
+                <!-- Skills Column -->
+                <div class="skills-column">
+                    <h3>Software Skills</h3>
+                    
+                    <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png" alt="Adobe Photoshop">
+                        <span>Adobe Photoshop</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/128/5968/5968472.png" alt="Adobe Illustrator">
+                        <span>Adobe Illustrator</span>
+                    </div>
+                     <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/128/5611/5611129.png" alt="Adobe XD">
+                        <span>Adobe XD</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/128/5968/5968428.png" alt="CSS">
+                        <span>After Effects</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Figma">
+                        <span>Figma</span>
+                    </div>
+                </div>
+   
+                
+                <!-- Experiences Column -->
+                <div class="skills-column">
+                    <h3>Experiences</h3>
+                    
+                    <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968267.png" alt="HTML">
+                        <span>HTML</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS">
+                        <span>CSS</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968313.png" alt="MySQL">
+                        <span>MySQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python">
+                        <span>Python</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Progress Bars -->
+            <div class="progress-container">
+                <h3>Skill Proficiency</h3>
+                
+                <div class="progress-bar">
+                    <div class="progress-info">
+                        <span>UI/UX Design</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-info">
+                        <span>Graphic Design</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-info">
+                        <span>Frontend Development</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-info">
+                        <span>Backend Development</span>
+                        <span>65%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">CONTACT</h2>
+            <p style="text-align: center; font-size: 24px; margin-bottom: 50px;">Drop Me a Message</p>
+            
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form">
+<form action="https://formsubmit.co/motigraphix@gmail.com" method="POST">
+  <div class="form-group">
+    <input type="text" name="name" placeholder="Name" required>
+  </div>
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Email" required>
+  </div>
+  <div class="form-group">
+    <textarea name="message" placeholder="Message" required></textarea>
+  </div>
+
+  <!-- Optional settings -->
+  <input type="hidden" name="_subject" value="New message from MotiGraphix!">
+  <input type="hidden" name="_captcha" value="false">
+
+  <button type="submit" class="btn">Send</button>
+</form>
+
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt contact-icon"></i>
+                        <span class="contact-text">+254 795907957</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span class="contact-text">motigraphix@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span class="contact-text">Rongo, Migori-Kenya</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Media -->
+            <div class="social-media">
+                <a href="https://www.facebook.com/share/12LF13icS5D/" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/tyson-orowe-1b7b56363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/motigraphix_?igsh=MWg2YmVoYW9zenR0Yw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/qr/YEZU7RNS42SFF1" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            
+            <!-- Footer -->
+            <footer>
+                <div class="logo">MotiGraphix</div>
+                <div class="copyright">©2025 MotiGraphix | All Rights Reserved</div>
+            </footer>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
